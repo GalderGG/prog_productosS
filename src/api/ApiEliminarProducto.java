@@ -31,18 +31,18 @@ public class ApiEliminarProducto extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		int id=Integer.parseInt(request.getParameter("id"));
+		int id = Integer.parseInt(request.getParameter("id"));
 		
 		try {
-			ModeloProducto modeloProducto=new ModeloProducto();
+			ModeloProducto modeloProducto = new ModeloProducto();
+			
 			modeloProducto.delete(id);
 			modeloProducto.getConexion().close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 		response.setHeader("Access-Control-Allow-Origin", "*"); 
-		
 	}
 
 	/**
