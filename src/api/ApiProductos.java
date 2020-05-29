@@ -2,6 +2,7 @@ package api;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -34,17 +35,24 @@ public class ApiProductos extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ModeloProducto mProducto = new ModeloProducto();
-		ArrayList<Producto> productos = mProducto.getAll();
-		
-		response.setHeader("Access-Control-Allow-Origin", "*");
-		response.setContentType("application/json");
+		ModeloProducto modeloProducto = new ModeloProducto();
+		ArrayList<Producto> productos = modeloProducto.getAll();
 		
 		String jsonString = JSONStringer.valueToString(productos);
 		PrintWriter out = response.getWriter();
 		
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setContentType("application/json");
+		
 		out.print(jsonString);
 		out.flush();
+		out.close();
+		
+		try {
+			modeloProducto.getConexion().close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
