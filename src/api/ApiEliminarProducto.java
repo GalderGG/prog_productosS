@@ -17,38 +17,39 @@ import modelo.dao.ModeloProducto;
 @WebServlet("/ApiEliminarProducto")
 public class ApiEliminarProducto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ApiEliminarProducto() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		int id = Integer.parseInt(request.getParameter("id"));
-		
-		try {
-			ModeloProducto modeloProducto = new ModeloProducto();
-			
-			modeloProducto.delete(id);
-			modeloProducto.getConexion().close();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		response.setHeader("Access-Control-Allow-Origin", "*"); 
+	public ApiEliminarProducto() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
+
+		ModeloProducto modeloProducto = new ModeloProducto();
+		modeloProducto.delete(id);
+		
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		
+		try {
+			modeloProducto.getConexion().close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
