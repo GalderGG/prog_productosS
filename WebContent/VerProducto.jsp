@@ -48,7 +48,6 @@
                       clip-rule="evenodd" />
                   </svg>
                 </a>
-
                 <a class="btn btn-success" href=""><svg class="bi bi-eye" width="1em" height="1em" viewBox="0 0 16 16"
                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
@@ -58,24 +57,18 @@
                       d="M8 5.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM4.5 8a3.5 3.5 0 117 0 3.5 3.5 0 01-7 0z"
                       clip-rule="evenodd" />
                   </svg></a>
-
               </td>
             </tr>
           </tbody>
         </table>
       </div>
       <div class="col-4">
-        espacio para mostrar lo que sea
+        Espacio para mostrar lo que sea
       </div>
-
     </div>
     <!--row-->
-
-
   </div>
   <!--container-->
-
-
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
